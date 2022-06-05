@@ -37,6 +37,7 @@ export default () => {
     path: env.SCANNER_PATH,
     baudRate: parseInt(env.SCANNER_BAUD_RATE, 10),
     autoOpen: Boolean(env.SCANNER_AUTO_OPEN),
+    mockScanner: Boolean(env.SCANNER_MOCK),
   };
   return config;
 };

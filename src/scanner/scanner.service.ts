@@ -5,13 +5,13 @@ import { ConfigService } from '@nestjs/config';
 import { Injectable } from '@nestjs/common';
 import { DelimiterParser, SerialPort } from 'serialport';
 import { HttpService } from '@nestjs/axios';
-import { env } from 'process';
+import { Stream } from 'stream';
 
 @Injectable()
 export class ScannerService {
-  scanner: any;
-  // port: SerialPort | SerialPortStream;
-  port: any;
+  scanner: Stream;
+  port: SerialPort | SerialPortStream;
+  // port: any;
   constructor(
     private configService: ConfigService,
     private readonly httpService: HttpService,
@@ -20,7 +20,8 @@ export class ScannerService {
   }
   scannerCreator() {
     const parser = new DelimiterParser({ delimiter: '\r\n' });
-    if (this.configService.get('mockScanner')) {
+    const isMockScanner = this.configService.get('mockScanner');
+    if (isMockScanner) {
       MockBinding.createPort('/dev/mock', { echo: true, record: true });
       this.port = new SerialPortStream({
         binding: MockBinding,

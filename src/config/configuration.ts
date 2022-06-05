@@ -29,9 +29,14 @@ export default () => {
     // },
     HTTP_TIMEOUT: parseInt(env.HTTP_TIMEOUT, 10),
     HTTP_MAX_REDIRECTS: parseInt(env.HTTP_MAX_REDIRECTS, 10),
-    path: 'COM3',
-    baudRate: 115200,
-    autoOpen: false,
+    // path: 'COM3',
+    // path: '/dev/tty.MiAir2s',
+    // baudRate: 115200,
+    // autoOpen: false,
+    // autoOpen: true,
+    path: env.SCANNER_PATH,
+    baudRate: parseInt(env.SCANNER_BAUD_RATE, 10),
+    autoOpen: Boolean(env.SCANNER_AUTO_OPEN),
   };
   return config;
 };

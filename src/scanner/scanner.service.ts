@@ -10,8 +10,7 @@ import { Stream } from 'stream';
 @Injectable()
 export class ScannerService {
   scanner: Stream;
-  port: SerialPort | SerialPortStream;
-  // port: any;
+  port: any;
   constructor(
     private configService: ConfigService,
     private readonly httpService: HttpService,

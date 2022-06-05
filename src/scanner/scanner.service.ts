@@ -31,6 +31,9 @@ export class ScannerService {
     return SerialPort.list();
   }
   receiveData(buffer) {
+    // this.httpService.get('http://www.baidu.com').subscribe((res) => {
+    //   console.log(res);
+    // });
     return buffer;
   }
 }

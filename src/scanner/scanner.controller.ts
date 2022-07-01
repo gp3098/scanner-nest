@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Req,
 } from '@nestjs/common';
 import { ScannerService } from './scanner.service';
 import { CreateScannerDto } from './dto/create-scanner.dto';
@@ -18,6 +19,11 @@ export class ScannerController {
   @Get('list')
   list() {
     return this.scannerService.list();
+  }
+
+  @Post('send')
+  send(@Body('msg') msg: string) {
+    return this.scannerService.send(msg);
   }
 
   // @Post()
